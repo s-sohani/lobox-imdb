@@ -37,7 +37,8 @@ public class DatasetImporterService {
             switch (fileTypeToImport) {
                 case TITLE_CREW -> titleCrewRepository.save(new TitleCrew(sp[0], sp[1], sp[2]));
                 case NAME_BASICS -> nameBasicsRepository.save(new NameBasics(sp[0], sp[1], convertToInteger(sp[2]), convertToInteger(sp[3]), sp[4], sp[5]));
-                case TITLE_BASICS -> titleBasicsRepository.save(new TitleBasics(sp[0], sp[1], sp[2], sp[3], convertToBoolean(sp[4]), convertToInteger(sp[5]), convertToInteger(sp[6]), convertToInteger(sp[7]), sp[8]));
+                case TITLE_BASICS -> titleBasicsRepository.save(new TitleBasics(sp[0], sp[1], sp[2], sp[3], convertToBoolean(sp[4]), convertToInteger(sp[5]),
+                        convertToInteger(sp[6]), convertToInteger(sp[7]), sp[8]));
                 case TITLE_PRINCIPALS -> titlePrincipalsRepository.save(new TitlePrincipals(sp[0], convertToInteger(sp[1]), sp[2], sp[3], sp[4], sp[5]));
                 case TITLE_RATINGS -> titleRatingsRepository.save(new TitleRatings(sp[0], convertToDouble(sp[1]), convertToInteger(sp[2])));
             }
@@ -53,11 +54,7 @@ public class DatasetImporterService {
     }
 
     private Boolean convertToBoolean(String str){
-        try {
-            return Boolean.parseBoolean(str);
-        } catch (Exception e) {
-            return null;
-        }
+        return Boolean.parseBoolean(str);
     }
 
     private Double convertToDouble(String str){
