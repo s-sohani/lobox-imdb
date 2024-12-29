@@ -2,6 +2,8 @@ package com.assesment.lobox.controller;
 
 import com.assesment.lobox.dto.ResponseDto;
 import com.assesment.lobox.service.TitleService;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.Metrics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TitleController {
     @Autowired
     private TitleService titleService;
-
+    private final Counter numOfCall = Metrics.counter("lobox.title.numOfCall");
 
     @GetMapping("/same-director-writer")
     public ResponseEntity<ResponseDto> getTitlesWithSameDirectorAndWriter() {
+        numOfCall.increment();
         try {
             return ResponseEntity
                     .ok(ResponseDto.builder().result(titleService.getTitlesWithSameDirectorAndWriter())
@@ -32,6 +35,7 @@ public class TitleController {
     public ResponseEntity<ResponseDto> getCommonTitles(
             @RequestParam String actor1,
             @RequestParam String actor2) {
+        numOfCall.increment();
         try {
             return ResponseEntity
                     .ok(ResponseDto.builder().result(titleService.getTitles(actor1, actor2))
@@ -45,6 +49,7 @@ public class TitleController {
 
     @GetMapping("/best-titles-by-genre")
     public ResponseEntity<ResponseDto> getBestTitlesByGenre(@RequestParam String genre) {
+        numOfCall.increment();
         try {
             return ResponseEntity
                     .ok(ResponseDto.builder().result(titleService.getBestTitles(genre))
