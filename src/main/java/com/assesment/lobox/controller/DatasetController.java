@@ -5,6 +5,7 @@ import com.assesment.lobox.dto.ResponseDto;
 import com.assesment.lobox.service.DatasetImporterService;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/dataset")
+@Log4j2
 public class DatasetController {
     @Autowired
     private DatasetImporterService datasetImporterService;
@@ -27,6 +29,7 @@ public class DatasetController {
             datasetImporterService.importDataset(file, fileTypeToImport);
             return ResponseEntity.ok(ResponseDto.builder().result("Data Import Successfully").build());
         } catch (Exception e) {
+            log.error("Error while inserting data to database", e);
             return ResponseEntity.ok(ResponseDto.builder().errors("Error while inserting data to database").build());
         }
     }
