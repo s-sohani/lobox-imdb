@@ -9,4 +9,5 @@ import java.util.List;
 
 @Repository
 public interface TitleBasicsRepository extends JpaRepository<TitleBasics, String> {
+    List<TitleBasics> findByTconstIn(List<String> tconstList);
 }

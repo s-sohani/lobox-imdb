@@ -1,9 +1,6 @@
 package com.assesment.lobox.dto;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public enum FileTypeImporting {
+public enum FileTypeToImport {
     TITLE_BASICS,
     NAME_BASICS,
     TITLE_CREW,

@@ -8,4 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TitlePrincipalsRepository extends JpaRepository<TitlePrincipals, String> {
+    List<TitlePrincipals> findAllByNconst(String nconst);
 }

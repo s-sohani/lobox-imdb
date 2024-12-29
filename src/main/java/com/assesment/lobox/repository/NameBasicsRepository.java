@@ -9,4 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface NameBasicsRepository extends JpaRepository<NameBasics, String> {
+    Optional<NameBasics> findByPrimaryName(String primaryName);
 }

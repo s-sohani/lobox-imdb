@@ -1,6 +1,6 @@
 package com.assesment.lobox.controller;
 
-import com.assesment.lobox.dto.FileTypeImporting;
+import com.assesment.lobox.dto.FileTypeToImport;
 import com.assesment.lobox.dto.ResponseDto;
 import com.assesment.lobox.service.DatasetImporterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class DatasetController {
     @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ResponseDto> importDataset(
             @RequestPart("file") MultipartFile file,
-            @RequestParam("fileTypeToImport") FileTypeImporting fileTypeToImport) {
+            @RequestParam("fileTypeToImport") FileTypeToImport fileTypeToImport) {
         try {
             datasetImporterService.importDataset(file, fileTypeToImport);
             return ResponseEntity.ok(ResponseDto.builder().result("Data Import Successfully").build());
