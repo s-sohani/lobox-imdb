@@ -24,7 +24,7 @@ public class DatasetImporterService {
     @Autowired
     private TitleRatingsRepository titleRatingsRepository;
 
-    public void importDataset(MultipartFile file, FileTypeImporting fileTypeImporting) throws IOException {
+    public void importDataset(MultipartFile file, FileTypeImporting fileTypeToImport) throws IOException {
         var sc = new Scanner(file.getInputStream(), "UTF-8");
         var headerSkipped = false;
         while (sc.hasNextLine()) {
@@ -34,7 +34,7 @@ public class DatasetImporterService {
                 continue;
             }
             var sp = line.split("\t");
-            switch (fileTypeImporting) {
+            switch (fileTypeToImport) {
                 case TITLE_CREW -> titleCrewRepository.save(new TitleCrew(sp[0], sp[1], sp[2]));
                 case NAME_BASICS -> nameBasicsRepository.save(new NameBasics(sp[0], sp[1], convertToInteger(sp[2]), convertToInteger(sp[3]), sp[4], sp[5]));
                 case TITLE_BASICS -> titleBasicsRepository.save(new TitleBasics(sp[0], sp[1], sp[2], sp[3], convertToBoolean(sp[4]), convertToInteger(sp[5]), convertToInteger(sp[6]), convertToInteger(sp[7]), sp[8]));

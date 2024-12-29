@@ -16,9 +16,11 @@ public class DatasetController {
     private DatasetImporterService datasetImporterService;
 
     @PostMapping(value = "/import", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ResponseDto> importDataset(@RequestPart("file") MultipartFile file,@RequestParam("type") FileTypeImporting fileTypeImporting) {
+    public ResponseEntity<ResponseDto> importDataset(
+            @RequestPart("file") MultipartFile file,
+            @RequestParam("fileTypeToImport") FileTypeImporting fileTypeToImport) {
         try {
-            datasetImporterService.importDataset(file, fileTypeImporting);
+            datasetImporterService.importDataset(file, fileTypeToImport);
             return ResponseEntity.ok(ResponseDto.builder().result("Data Import Successfully").build());
         } catch (Exception e) {
             return ResponseEntity.ok(ResponseDto.builder().errors("Error while inserting data to database").build());

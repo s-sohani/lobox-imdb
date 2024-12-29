@@ -46,7 +46,7 @@ class DatasetControllerTest {
         );
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/dataset/import")
-                        .file(mockFile).param("type", "TITLE_BASICS"))
+                        .file(mockFile).param("fileTypeToImport", "TITLE_BASICS"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"result\":\"Data Import Successfully\",\"errors\":null}"));
         assertEquals(4, titleBasicsRepository.findAll().size());
@@ -67,7 +67,7 @@ class DatasetControllerTest {
         );
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/dataset/import")
-                        .file(mockFile).param("type", "NAME_BASICS"))
+                        .file(mockFile).param("fileTypeToImport", "NAME_BASICS"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"result\":\"Data Import Successfully\",\"errors\":null}"));
         assertEquals(3, nameBasicsRepository.findAll().size());
@@ -93,7 +93,7 @@ class DatasetControllerTest {
         );
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/dataset/import")
-                        .file(mockFile).param("type", "TITLE_CREW"))
+                        .file(mockFile).param("fileTypeToImport", "TITLE_CREW"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"result\":\"Data Import Successfully\",\"errors\":null}"));
         assertEquals(8, titleCrewRepository.findAll().size());
@@ -122,7 +122,7 @@ class DatasetControllerTest {
         );
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/dataset/import")
-                        .file(mockFile).param("type", "TITLE_PRINCIPALS"))
+                        .file(mockFile).param("fileTypeToImport", "TITLE_PRINCIPALS"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"result\":\"Data Import Successfully\",\"errors\":null}"));
         assertEquals(3, titlePrincipalsRepository.findAll().size());
@@ -152,7 +152,7 @@ class DatasetControllerTest {
         );
 
         mockMvc.perform(MockMvcRequestBuilders.multipart("/dataset/import")
-                        .file(mockFile).param("type", "TITLE_RATINGS"))
+                        .file(mockFile).param("fileTypeToImport", "TITLE_RATINGS"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"result\":\"Data Import Successfully\",\"errors\":null}"));
         assertEquals(12, titleRatingsRepository.findAll().size());
