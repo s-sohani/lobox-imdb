@@ -1,4 +1,4 @@
-package com.assesment.lobox.Entity;
+package com.assesment.lobox.entity;
 
 import lombok.Data;
 

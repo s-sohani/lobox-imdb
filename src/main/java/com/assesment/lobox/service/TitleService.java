@@ -1,9 +1,9 @@
 package com.assesment.lobox.service;
 
 import com.assesment.lobox.dto.BestTitleRatingDto;
-import com.assesment.lobox.Entity.NameBasics;
-import com.assesment.lobox.Entity.TitleBasics;
-import com.assesment.lobox.Entity.TitlePrincipals;
+import com.assesment.lobox.entity.NameBasics;
+import com.assesment.lobox.entity.TitleBasics;
+import com.assesment.lobox.entity.TitlePrincipals;
 import com.assesment.lobox.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

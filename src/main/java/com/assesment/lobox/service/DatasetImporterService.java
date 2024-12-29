@@ -1,6 +1,6 @@
 package com.assesment.lobox.service;
 
-import com.assesment.lobox.Entity.*;
+import com.assesment.lobox.entity.*;
 import com.assesment.lobox.dto.FileTypeToImport;
 import com.assesment.lobox.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;

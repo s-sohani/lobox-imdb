@@ -1,10 +1,9 @@
 package com.assesment.lobox.repository;
 
-import com.assesment.lobox.Entity.NameBasics;
+import com.assesment.lobox.entity.NameBasics;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

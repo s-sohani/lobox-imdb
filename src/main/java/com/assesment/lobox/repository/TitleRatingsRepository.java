@@ -1,6 +1,6 @@
 package com.assesment.lobox.repository;
 
-import com.assesment.lobox.Entity.TitleRatings;
+import com.assesment.lobox.entity.TitleRatings;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
